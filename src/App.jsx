@@ -4,7 +4,6 @@ import { ThemeContext } from "./contexts/ThemeContext";
 import Example from "./Example";
 import ReducerExample from "./ReducerExample";
 import MemoExample from "./MemoExample";
-import Form from "./Form";
 
 import "./App.css";
 
@@ -25,8 +24,7 @@ function App() {
       {/* <button ref={btnRef} onClick={toggleTheme}>{theme}</button> */}
       {/* {show && <Example show={show} />} */}
 
-      {/* <MemoExample /> */}
-      <Form />
+      <MemoExample />
     </div>
   );
 }

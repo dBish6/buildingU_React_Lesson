@@ -47,14 +47,27 @@ const notificationsData = {
 };
 
 export default function MemoExample() {
-  const [notifications, setNotifications] = useState(notificationsData);
+  const [search, setSearch] = useState("");
 
-  const notificationsC = useMemo(() => Object.entries(notifications), [notifications]);
-  console.log("notificationsC", notificationsC);
+  const notificationsMemo = useMemo(() => {
+    if (!search) return Object.entries(notificationsData);
+
+    return Object.entries(notificationsData).map(([type, arr]) => [
+      type,
+      arr.filter((notification) =>
+        notification.title.toLowerCase().includes(search.toLowerCase().trim())
+      ),
+    ]);
+  }, [search]);
 
   return (
     <div>
-      {notificationsC.map(([type, arr], i) => (
+      <input
+        placeholder="Search by Title"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      {notificationsMemo.map(([type, arr], i) => (
         <div key={type + i}>
           <h3>{type}</h3>
           {arr.map((notification, i) => (
