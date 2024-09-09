@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 
 // const array = ["Hello", "Bye", "Hello Again"];
+
+// Pretend the arrays are huge.
 const notificationsData = {
   news: [
     {
